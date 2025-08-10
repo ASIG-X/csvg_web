@@ -46,6 +46,33 @@
 
 <body>
 
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+          <img src="static/images/asig_logo.png" alt="Left Logo" class="logo">
+        </a>
+      </div>
+      <div class="navbar-menu is-active">
+        <div class="navbar-start">
+          <a class="navbar-item" href="https://asig-x.github.io/">
+            ASIG Group
+          </a>
+          <a class="navbar-item" href="https://kailaili.github.io/pub">
+            Publications
+          </a>
+          <a class="navbar-item" href="https://kailaili.github.io/teaching">
+            Education
+          </a>
+        </div>
+        <div class="navbar-end">
+          <a class="navbar-item" href="#">
+            <img src="static/images/rug_logo.png" alt="Right Logo" class="logo">
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
 
   <section class="hero">
     <div class="hero-body">
@@ -60,14 +87,10 @@
                 <a href="" target="_blank">Qihao Yuan</a><sup>†</sup>,
               </span>
               <span class="author-block">
-                <a href="https://jamycheung.github.io/" target="_blank">Jiaming Zhang</a><sup>‡,*</sup>,
+                <a href="https://kailaili.github.io/" target="_blank">Kailai Li</a><sup>†</sup>,
               </span>
               <span class="author-block">
-                <a href="https://kailaili.github.io/" target="_blank">Kailai Li</a><sup>†,*</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://cvhci.anthropomatik.kit.edu/people_596.php" target="_blank">Rainer
-                  Stiefelhagen</a><sup>‡</sup>
+                <a href="https://jamycheung.github.io/" target="_blank">Jiaming Zhang</a><sup>‡</sup>,
               </span>
             </div>
 
@@ -77,8 +100,6 @@
               <br />
               <sup>‡</sup>
               <span class="author-block">Karlsruhe Institute of Technology</span><br>
-              <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Corresponding Authors with Equal
-                  Contribution</small></span>
             </div>
 
             <div class="column has-text-centered">
@@ -307,17 +328,18 @@
             <p>
               3D visual grounding (3DVG) aims to locate objects in a 3D scene with natural language descriptions.
               Supervised methods have achieved decent accuracy, but have a closed vocabulary and limited language
-              understanding ability. Zero-shot methods mostly utilize large language models (LLMs) to handle natural
-              language descriptions, yet suffer from slow inference speed. To address these problems, in this work, we
-              propose a zero-shot method that reformulates the 3DVG task as a Constraint Satisfaction Problem (CSP),
-              where the variables and constraints represent objects and their spatial relations, respectively. This
-              allows a global reasoning of all relevant objects, producing grounding results of both the target and
-              anchor objects. Moreover, we demonstrate the flexibility of our framework by handling negation- and
-              counting-based queries with only minor extra coding efforts. Our system, Constraint Satisfaction Visual
-              Grounding (CSVG), has been extensively evaluated on the public datasets ScanRefer and Nr3D datasets using
-              only open-source LLMs. Results show the effectiveness of CSVG and superior grounding accuracy over current
-              state-of-the-art zero-shot 3DVG methods with improvements of +7.0% (Acc@0.5 score) and +11.2% on the
-              ScanRefer and Nr3D datasets, respectively.
+              understanding ability. Zero-shot methods utilize large language models (LLMs) to handle natural language
+              descriptions, where the LLM either produces grounding results directly or generates programs that compute
+              results (symbolically). In this work, we propose a zero-shot method that reformulates the 3DVG task as a
+              Constraint Satisfaction Problem (CSP), where the variables and constraints represent objects and their
+              spatial relations, respectively. This allows a global symbolic reasoning of all relevant objects,
+              producing grounding results of both the target and anchor objects. Moreover, we demonstrate the
+              flexibility of our framework by handling negation- and counting-based queries with only minor extra coding
+              efforts. Our system, Constraint Satisfaction Visual Grounding (CSVG), has been extensively evaluated on
+              the public datasets ScanRefer and Nr3D datasets using only open-source LLMs. Results show the
+              effectiveness of CSVG and superior grounding accuracy over current state-of-the-art zero-shot 3DVG methods
+              with improvements of +7.0% (Acc@0.5 score) and +11.2% on the ScanRefer and Nr3D datasets,
+              respectively.
             </p>
           </div>
         </div>
