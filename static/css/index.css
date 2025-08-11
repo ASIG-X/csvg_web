@@ -163,3 +163,13 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.publication-venue-bmvc {
+  color: rgb(255, 97, 97);
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.small-text {
+  font-size: medium;
+}
