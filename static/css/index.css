@@ -2,6 +2,251 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
+/* COMMENTED OUT - Make navbar fixed with clean style and slightly increased height */
+/*
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+  min-height: 4.5rem;
+  height: 4.5rem;
+  padding: 0;
+}
+
+.navbar .container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+*/
+
+/* Remove padding from body since navbar is removed */
+body {
+  padding-top: 0;
+  /* Changed from 4.5rem to 0 */
+}
+
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  /* Changed from 4.5rem to 0 - now starts at top */
+  left: 0;
+  height: 100vh;
+  /* Changed from calc(100vh - 4.5rem) to 100vh */
+  width: 60px;
+  background: #ffffff;
+  border-right: 1px solid #e5e5e5;
+  box-shadow: 1px 0 1px rgba(10, 10, 10, 0.1);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.sidebar.expanded {
+  width: 250px;
+}
+
+/* Add hover expansion - but only when not manually expanded */
+.sidebar:not(.expanded):hover {
+  width: 250px;
+}
+
+.sidebar:not(.expanded):hover .sidebar-link span {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sidebar:not(.expanded):hover .sidebar-logo span {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Remove the conflicting general hover rule that was interfering */
+/* .sidebar:hover {
+  width: 250px;
+}
+
+.sidebar:hover .sidebar-link span {
+  opacity: 1;
+  transform: translateX(0);
+} */
+
+.sidebar:hover {
+  width: 250px;
+}
+
+.sidebar:hover .sidebar-link span {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sidebar-toggle {
+  display: none !important;
+}
+
+.sidebar-content {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /* Reduced from 80px since no toggle button */
+  height: 100%;
+  /* Changed from calc(100% - 80px) to use full height */
+  overflow: hidden;
+  width: 100%;
+  /* Ensure content doesn't exceed sidebar width */
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  /* Ensure nav doesn't exceed parent width */
+}
+
+.sidebar-nav li {
+  margin: 0;
+  width: 100%;
+  /* Ensure list items don't exceed parent width */
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  color: #5a5a5a;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  white-space: nowrap;
+  font-weight: 500;
+  width: 100%;
+  /* Ensure links don't exceed parent width */
+  box-sizing: border-box;
+  /* Include padding in width calculation */
+}
+
+.sidebar-link i {
+  font-size: 16px;
+  min-width: 20px;
+  text-align: center;
+  color: #6c757d;
+}
+
+.sidebar-link span {
+  margin-left: 15px;
+  opacity: 0;
+  /* Changed back from 1 to 0 - hidden by default */
+  transform: translateX(-20px);
+  /* Changed back from translateX(0) to translateX(-20px) - off position by default */
+  transition: all 0.3s ease;
+}
+
+.sidebar.expanded .sidebar-link span {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sidebar-link:hover {
+  background: #f8f9fa;
+  color: #333;
+  transform: translateX(3px);
+}
+
+.sidebar-link:hover i {
+  color: #007bff;
+}
+
+.sidebar-link.active {
+  background: #e3f2fd;
+  color: #1976d2;
+  border-right: 3px solid #1976d2;
+}
+
+.sidebar-link.active i {
+  color: #1976d2;
+}
+
+.sidebar-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: #007bff;
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.sidebar-link:hover::before {
+  transform: scaleY(1);
+}
+
+/* Add separator styling for sidebar */
+.sidebar-separator {
+  border-top: 1px solid #e5e5e5;
+  margin: 10px 15px;
+  width: calc(100% - 30px);
+  /* Prevent separator from causing overflow */
+}
+
+/* Add some padding to main content to account for sidebar */
+.main-content {
+  margin-left: 60px;
+  /* Changed back from 250px to 60px - account for collapsed sidebar */
+  transition: margin-left 0.3s ease;
+}
+
+.main-content.expanded {
+  margin-left: 250px;
+}
+
+/* Add fixed left margin to all main content areas */
+.hero,
+.section,
+.footer {
+  margin-left: 60px;
+  /* Changed back from 250px to 60px - account for collapsed sidebar */
+  transition: margin-left 0.3s ease;
+}
+
+/* Add expanded state styles for hero, section, footer */
+.hero.expanded,
+.section.expanded,
+.footer.expanded {
+  margin-left: 250px;
+}
+
+/* Also ensure elements with both hero and section classes are covered */
+.hero.section.expanded {
+  margin-left: 250px;
+}
+
+/* COMMENTED OUT - Update navbar item styling */
+/*
+.navbar-item {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: #5a5a5a;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-item:hover {
+  color: #1976d2;
+  background: transparent;
+}
+*/
 
 .footer .icon-link {
   font-size: 25px;
@@ -151,12 +396,12 @@ body {
 }
 
 .logo {
-  max-height: 50px !important;
+  max-height: 3rem !important;
   width: auto;
 }
 
 .navbar {
-  box-shadow: 0 2px 5px rgba(10, 10, 10, 0.5);
+  box-shadow: 0 1px 1px rgba(10, 10, 10, 0.3);
 }
 
 .navbar-item {
@@ -172,4 +417,306 @@ body {
 
 .small-text {
   font-size: medium;
+}
+
+/* Ensure navbar brand starts from very left with small margin */
+.navbar-brand {
+  margin-left: 0 !important;
+}
+
+.navbar-brand .navbar-item {
+  padding-left: 1rem !important;
+  margin-left: 0 !important;
+}
+
+/* Ensure navbar end aligns to very right */
+.navbar-end {
+  margin-right: 1rem !important;
+}
+
+.navbar-end .navbar-item {
+  padding-right: 0.75rem;
+}
+
+/* Hide hamburger button on desktop since sidebar is always visible */
+.navbar-burger {
+  display: none !important;
+}
+
+/* Add special styling for logo in sidebar */
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  padding: 20px 10px;
+  color: #5a5a5a;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  white-space: nowrap;
+  font-weight: 600;
+  border-bottom: 1px solid #f0f0f0;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sidebar-logo img {
+  width: 42px;
+  /* Reduced from 48px - smaller when collapsed */
+  height: 42px;
+  /* Reduced from 48px - smaller when collapsed */
+  min-width: 42px;
+  transition: all 0.3s ease;
+  margin-bottom: 4px;
+}
+
+.sidebar-logo span {
+  margin-left: 0;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+  font-size: 14px;
+  /* TEXT SIZE UNCHANGED */
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Expand the logo when sidebar is expanded */
+.sidebar.expanded .sidebar-logo {
+  padding: 25px 20px;
+}
+
+.sidebar.expanded .sidebar-logo img {
+  width: 64px;
+  /* UNCHANGED - stays large when expanded */
+  height: 64px;
+  /* UNCHANGED - stays large when expanded */
+  margin-bottom: 8px;
+}
+
+.sidebar.expanded .sidebar-logo span {
+  opacity: 1;
+  transform: scale(1);
+  font-size: 24px;
+  /* TEXT SIZE UNCHANGED */
+}
+
+/* Also expand on hover */
+.sidebar:not(.expanded):hover .sidebar-logo {
+  padding: 25px 20px;
+}
+
+.sidebar:not(.expanded):hover .sidebar-logo img {
+  width: 64px;
+  /* UNCHANGED - stays large when hovered */
+  height: 64px;
+  /* UNCHANGED - stays large when hovered */
+  margin-bottom: 8px;
+}
+
+.sidebar:not(.expanded):hover .sidebar-logo span {
+  opacity: 1;
+  transform: scale(1);
+  font-size: 24px;
+  /* TEXT SIZE UNCHANGED */
+}
+
+/* Mobile responsiveness fixes */
+@media only screen and (max-width: 1023px) {
+
+  /* Keep sidebar visible but make it smaller on smaller screens */
+  .sidebar {
+    width: 50px;
+    display: block;
+  }
+
+  .sidebar.expanded {
+    width: 200px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Fix hover expansion on mobile to use mobile width */
+  .sidebar:not(.expanded):hover {
+    width: 200px;
+  }
+
+  /* Adjust sidebar link padding for mobile collapsed state */
+  .sidebar-link {
+    padding: 8px 5px;
+    /* Further reduced padding to ensure icons fit */
+    justify-content: center;
+    min-height: 40px;
+    /* Ensure minimum touch target */
+  }
+
+  .sidebar-link i {
+    font-size: 14px;
+    min-width: 14px;
+    /* Reduced min-width to prevent overflow */
+    margin: 0;
+    /* Remove any margin that might push icons left */
+  }
+
+  .sidebar-link span {
+    display: none;
+    /* Hide text completely when collapsed on mobile to prevent layout issues */
+  }
+
+  /* When expanded, restore normal padding and alignment */
+  .sidebar.expanded .sidebar-link,
+  .sidebar:not(.expanded):hover .sidebar-link {
+    padding: 12px 15px;
+    /* Reduced from 15px 20px for mobile */
+    justify-content: flex-start;
+  }
+
+  .sidebar.expanded .sidebar-link i,
+  .sidebar:not(.expanded):hover .sidebar-link i {
+    font-size: 16px;
+    min-width: 20px;
+  }
+
+  .sidebar.expanded .sidebar-link span,
+  .sidebar:not(.expanded):hover .sidebar-link span {
+    display: inline;
+    /* Show text when expanded */
+  }
+
+  /* Fix logo sizing for mobile */
+  .sidebar-logo {
+    padding: 8px 5px !important;
+    min-height: 65px;
+    /* Increased to accommodate larger logo */
+  }
+
+  .sidebar-logo img {
+    width: 34px !important;
+    /* Reduced from 38px - smaller when collapsed on mobile */
+    height: 34px !important;
+    /* Reduced from 38px - smaller when collapsed on mobile */
+    margin-bottom: 3px !important;
+    object-fit: contain !important;
+    max-width: 34px !important;
+    max-height: 34px !important;
+  }
+
+  /* Mobile expanded/hover sizes remain unchanged */
+  .sidebar.expanded .sidebar-logo img,
+  .sidebar:not(.expanded):hover .sidebar-logo img {
+    width: 58px !important;
+    /* UNCHANGED - stays large when expanded */
+    height: 58px !important;
+    /* UNCHANGED - stays large when expanded */
+    margin-bottom: 8px !important;
+    object-fit: contain !important;
+    max-width: 58px !important;
+    max-height: 58px !important;
+  }
+
+  /* Fix hamburger button visibility on mobile */
+  .sidebar-toggle {
+    display: none !important;
+  }
+
+  /* Adjust sidebar content for mobile without hamburger button */
+  .sidebar-content {
+    padding-bottom: 20px !important;
+    /* Remove extra bottom padding */
+    height: 100% !important;
+    /* Use full height */
+  }
+
+  /* Adjust separator for mobile */
+  .sidebar-separator {
+    margin: 5px 8px;
+    /* Smaller margin for mobile */
+    width: calc(100% - 16px);
+  }
+
+  /* Make sidebar overlay content on mobile instead of pushing it */
+  .sidebar {
+    z-index: 1010;
+    /* Ensure sidebar is above content */
+  }
+
+  /* Keep small margin to accommodate collapsed sidebar, but don't increase it when expanded */
+  .hero,
+  .section,
+  .footer,
+  .main-content {
+    margin-left: 50px !important;
+    /* Fixed margin for collapsed sidebar width */
+    transition: none !important;
+    /* Disable transitions */
+  }
+
+  /* Ensure expanded state doesn't affect margins on mobile */
+  .hero.expanded,
+  .section.expanded,
+  .footer.expanded,
+  .main-content.expanded {
+    margin-left: 50px !important;
+    /* Keep same margin even when expanded */
+  }
+}
+
+/* Add a specific breakpoint for very narrow screens */
+@media only screen and (max-width: 768px) {
+  .sidebar {
+    width: 45px;
+  }
+
+  .sidebar-link {
+    padding: 6px 2px;
+    min-height: 36px;
+  }
+
+  .sidebar-link i {
+    font-size: 12px;
+    min-width: 12px;
+  }
+
+  .sidebar-logo {
+    padding: 8px 3px !important;
+    min-height: 60px;
+    /* Increased to accommodate larger logo */
+  }
+
+  .sidebar-logo img {
+    width: 28px !important;
+    /* Reduced from 32px - smaller when collapsed on very narrow screens */
+    height: 28px !important;
+    /* Reduced from 32px - smaller when collapsed on very narrow screens */
+    margin-bottom: 3px !important;
+    object-fit: contain !important;
+    max-width: 28px !important;
+    max-height: 28px !important;
+  }
+
+  /* When expanded on very narrow screens */
+  .sidebar.expanded .sidebar-logo,
+  .sidebar:not(.expanded):hover .sidebar-logo {
+    padding: 20px 12px !important;
+    /* Slightly increased padding for larger logo */
+  }
+
+  .sidebar.expanded .sidebar-logo img,
+  .sidebar:not(.expanded):hover .sidebar-logo img {
+    width: 48px !important;
+    /* Increased from 42px - LOGO ONLY */
+    height: 48px !important;
+    /* Increased from 42px - LOGO ONLY */
+    object-fit: contain !important;
+    max-width: 48px !important;
+    max-height: 48px !important;
+  }
+
+  .sidebar.expanded .sidebar-logo span,
+  .sidebar:not(.expanded):hover .sidebar-logo span {
+    font-size: 16px !important;
+    /* TEXT SIZE UNCHANGED */
+    display: inline !important;
+  }
 }

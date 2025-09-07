@@ -32,13 +32,14 @@
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <!-- Replace local Font Awesome with CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <!-- Remove local Font Awesome JS -->
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
@@ -46,23 +47,26 @@
 
 <body>
 
+  <!-- COMMENTED OUT - Navbar -->
+  <!--
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item" href="#">
           <img src="static/images/asig_logo.png" alt="Left Logo" class="logo">
         </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
       </div>
-      <div class="navbar-menu is-active">
+
+      <div class="navbar-menu">
         <div class="navbar-start">
           <a class="navbar-item" href="https://asig-x.github.io/">
             ASIG Lab
-          </a>
-          <a class="navbar-item" href="https://kailaili.github.io/pub">
-            Publications
-          </a>
-          <a class="navbar-item" href="https://kailaili.github.io/teaching">
-            Education
           </a>
         </div>
         <div class="navbar-end">
@@ -73,8 +77,45 @@
       </div>
     </div>
   </nav>
+  -->
 
-  <section class="hero">
+  <!-- Sidebar Navigation -->
+  <!-- choose your icons here: https://fontawesome.com/icons -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-content">
+      <nav class="sidebar-nav">
+        <ul>
+          <!-- ASIG Lab logo as first item -->
+          <li>
+            <a href="https://asig-x.github.io/" class="sidebar-logo external-link">
+              <img src="static/images/asig_logo.png" alt="ASIG Lab">
+              <span>ASIG Lab</span>
+            </a>
+          </li>
+
+          <!-- Content navigation for this page -->
+          <li><a href="#home" class="sidebar-link"><i class="fas fa-home"></i><span>Home</span></a></li>
+          <li><a href="#gallery" class="sidebar-link"><i class="fas fa-images"></i><span>Gallery</span></a></li>
+          <li><a href="#abstract" class="sidebar-link"><i class="fas fa-file-alt"></i><span>Abstract</span></a></li>
+          <li><a href="#complex-queries" class="sidebar-link"><i class="fas fa-code"></i><span>Complex
+                Queries</span></a></li>
+          <li><a href="#citation" class="sidebar-link"><i class="fas fa-quote-right"></i><span>Citation</span></a></li>
+
+          <!-- Separator line -->
+          <li>
+            <div class="sidebar-separator"></div>
+          </li>
+
+          <!-- Page navigation -->
+          <li><a href="evaluations.html" class="sidebar-link external-link"><i
+                class="fas fa-chart-bar"></i><span>Evaluations</span></a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Removed hamburger button -->
+  </div>
+
+  <section class="hero" id="home">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
@@ -161,7 +202,7 @@
   </section>
 
   <!-- Video carousel -->
-  <section class="hero is-small">
+  <section class="hero is-small" id="gallery">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="has-text-centered">
@@ -324,7 +365,8 @@
   <!-- End video carousel -->
 
   <!-- Paper abstract -->
-  <section class="section hero is-light">
+  <!-- remove the "section" class to enable the dynamic offset -->
+  <section class="hero is-light" id="abstract">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
@@ -354,7 +396,7 @@
   <!-- End paper abstract -->
 
   <!-- Video carousel -->
-  <section class="hero is-small">
+  <section class="hero is-small" id="complex-queries">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="has-text-centered">
@@ -505,62 +547,8 @@
   </section>
   <!-- End video carousel -->
 
-  <!-- Teaser video-->
-  <section class="hero">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <img src="static/images/table_scanrefer.png" />
-        <h2 class="subtitle has-text-centered">
-          Quantitative evaluation results on the <a href="https://daveredrum.github.io/ScanRefer/">ScanRefer</a>
-          dataset.
-        </h2>
-      </div>
-    </div>
-  </section>
-  <!-- End teaser video -->
-
-  <!-- Teaser video-->
-  <section class="hero">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <img src="static/images/table_nr3d.png" />
-        <h2 class="subtitle has-text-centered">
-          Quantitative evaluation results on the <a href="https://referit3d.github.io/">Nr3D</a> dataset.
-        </h2>
-      </div>
-    </div>
-  </section>
-  <!-- End teaser video -->
-
-  <!-- Paper poster -->
-  <!-- <section class="hero is-small is-light">
-    <div class="hero-body">
-      <div class="container">
-        <h2 class="title">Poster</h2>
-
-        <iframe src="static/pdfs/quali_eval.pdf" width="100%" height="550">
-        </iframe>
-
-      </div>
-    </div>
-  </section> -->
-  <!--End paper poster -->
-
-  <!-- Teaser video-->
-  <section class="hero">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <img src="static/images/quali-eval.png" />
-        <h2 class="subtitle has-text-centered">
-          Some grounding results and comparison with <a href="https://curryyuan.github.io/ZSVG3D/">ZSVG3D</a>.
-        </h2>
-      </div>
-    </div>
-  </section>
-  <!-- End teaser video -->
-
-  <!--BibTex citation -->
-  <section class="section" id="BibTeX">
+  <!-- BibTex citation -->
+  <section class="section" id="citation">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre><code>@misc{yuan2024solvingzeroshot3dvisual,
